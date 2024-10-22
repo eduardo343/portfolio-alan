@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
-import Me from '../Images/Me.jpeg'; 
+import Me from '../Images/Me.jpeg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'; 
 import { faAngular, faCss3, faGit, faGithub, faGolang, faHtml5, faPhp, faPython, faReact, faRust, faVuejs } from '@fortawesome/free-brands-svg-icons'; 
 import { faC } from '@fortawesome/free-solid-svg-icons'; 
 import ruby from '../Images/ruby.png'; 
 import angular_ts from '../Images/angular_ts.png'; 
 import java_logo from '../Images/java_logo.png'; 
-import pythonImg from '../Images/python.png'; // Renamed to avoid conflict with faPython
+import pythonImg from '../Images/python.png';
 
-// Externalize the learning paths and tech icons for better organization
+// Definición de los caminos de aprendizaje
 const learningPaths = [
   {
     image: ruby,
@@ -48,6 +48,7 @@ const learningPaths = [
   },
 ];
 
+// Íconos de tecnologías
 const techIcons = [
   { icon: faReact, color: 'text-blue-600', label: 'React' },
   { icon: faPhp, color: 'text-purple-600', label: 'PHP' },
@@ -67,14 +68,14 @@ function AboutMe() {
     isLearningVisible: true,
   });
 
-  // Toggle visibility based on key
+  // Función para alternar la visibilidad de las secciones
   const toggleVisibility = (key) => {
     setVisibility((prev) => ({ ...prev, [key]: !prev[key] }));
   };
 
   return (
     <div className="p-8">
-      {/* Profile Image Section */}
+      {/* Sección de la Imagen de Perfil */}
       {visibility.isImageVisible ? (
         <img 
           src={Me} 
@@ -91,14 +92,13 @@ function AboutMe() {
         </div>
       )}
 
-      {/* About Me Section */}
+      {/* Sección About Me */}
       <h1 className="text-4xl font-extrabold mb-4 text-center text-gray-800">About Me</h1>
-      
       <p className="text-lg mb-6 text-gray-700 text-center">
         Hi, I'm Alan Saucedo. I'm an engineer with experience in:
       </p>
 
-      {/* Technology Icons */}
+      {/* Íconos de Tecnologías */}
       <div className="flex flex-wrap justify-center mb-6">
         {techIcons.map((tech, index) => (
           <FontAwesomeIcon 
@@ -115,7 +115,7 @@ function AboutMe() {
         I love books and learning about frameworks or languages. I enjoy music, walks, and food, and have a passion for physics.
       </p>
 
-      {/* Learning Path Section */}
+      {/* Sección Learning Path */}
       <h2 
         className="text-3xl font-extrabold mb-6 text-green-700 text-center cursor-pointer flex items-center justify-center"
         onClick={() => toggleVisibility('isLearningVisible')} 
@@ -133,7 +133,7 @@ function AboutMe() {
               key={index} 
               className="bg-white p-6 rounded-lg shadow-md transition-transform transform hover:scale-105 flex flex-col"
             >
-              {/* Image */}
+              {/* Imagen */}
               <div className="flex justify-center mb-4">
                 <img 
                   src={path.image} 
@@ -141,13 +141,13 @@ function AboutMe() {
                   className="w-24 h-auto rounded-lg border border-gray-300" 
                 />
               </div>
-              {/* Title */}
+              {/* Título */}
               <h3 className="text-2xl font-semibold text-center mb-4 text-gray-800">{path.title}</h3>
-              {/* Points */}
+              {/* Puntos */}
               <ul className="space-y-3">
                 {path.points.map((point, idx) => (
                   <li key={idx} className="flex items-start">
-                    {/* Numbered Circle */}
+                    {/* Círculo Numerado */}
                     <span 
                       className={`flex-shrink-0 w-8 h-8 mr-4 flex items-center justify-center font-bold text-white rounded-full ${
                         idx % 2 === 0 ? 'bg-red-400' : 'bg-yellow-300'
@@ -156,7 +156,7 @@ function AboutMe() {
                     >
                       {idx + 1}
                     </span>
-                    {/* Text */}
+                    {/* Texto */}
                     <p className="text-gray-700 flex-1 break-words">
                       {point}
                     </p>
